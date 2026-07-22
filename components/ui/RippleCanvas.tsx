@@ -48,9 +48,18 @@ export default function RippleCanvas() {
       if (ripples.length > 60) ripples.splice(0, ripples.length - 60);
     };
 
-    const onClick = (e: MouseEvent) => spawn(e.clientX, e.clientY, true);
+    // Elements (or descendants of elements) marked data-no-ripple suppress the
+    // trail, e.g. drag interactions like the before/after slider handle.
+    const isSuppressed = (e: MouseEvent) =>
+      e.target instanceof Element && !!e.target.closest('[data-no-ripple]');
+
+    const onClick = (e: MouseEvent) => {
+      if (isSuppressed(e)) return;
+      spawn(e.clientX, e.clientY, true);
+    };
     let last = 0;
     const onMove = (e: MouseEvent) => {
+      if (isSuppressed(e)) return;
       const now = performance.now ? performance.now() : Date.now();
       if (now - last > 210) { last = now; spawn(e.clientX, e.clientY, false); }
     };

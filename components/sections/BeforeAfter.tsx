@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { MoveHorizontal } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MoveHorizontal } from 'lucide-react';
 import { beforeAfterSlides } from '@/lib/content';
 
 export default function BeforeAfter() {
@@ -10,6 +10,7 @@ export default function BeforeAfter() {
   const ref = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
   const slide = beforeAfterSlides[active];
+  const count = beforeAfterSlides.length;
 
   const set = (clientX: number) => {
     const el = ref.current;
@@ -19,8 +20,8 @@ export default function BeforeAfter() {
     setPos(Math.max(4, Math.min(96, p)));
   };
 
-  const selectSlide = (i: number) => {
-    setActive(i);
+  const go = (dir: 1 | -1) => {
+    setActive((a) => (a + dir + count) % count);
     setPos(50);
   };
 
@@ -29,6 +30,7 @@ export default function BeforeAfter() {
       <div className="flex flex-col gap-3">
         <div
           ref={ref}
+          data-no-ripple
           className="relative aspect-[16/11] w-full select-none overflow-hidden rounded-[4px] tile-edge"
           onMouseMove={(e) => dragging.current && set(e.clientX)}
           onMouseDown={(e) => { dragging.current = true; set(e.clientX); }}
@@ -77,26 +79,28 @@ export default function BeforeAfter() {
               <MoveHorizontal className="h-5 w-5" strokeWidth={1.5} />
             </div>
           </div>
-        </div>
 
-        {/* Slide selector */}
-        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Before and after examples">
-          {beforeAfterSlides.map((s, i) => (
-            <button
-              key={s.tab}
-              role="tab"
-              aria-selected={active === i}
-              onClick={() => selectSlide(i)}
-              className={`rounded-full border px-4 py-2 text-[0.66rem] uppercase tracking-[0.14em] transition-all duration-300 ${
-                active === i
-                  ? 'border-gold bg-gold/10 text-gold'
-                  : 'border-crystal/15 text-crystal/55 hover:border-crystal/40 hover:text-cloud'
-              }`}
-              data-hover
-            >
-              {s.tab}
-            </button>
-          ))}
+          {/* Prev / next */}
+          <button
+            type="button"
+            aria-label={`Previous example: ${beforeAfterSlides[(active - 1 + count) % count].tab}`}
+            onMouseDown={(e) => e.stopPropagation()}
+            onClick={(e) => { e.stopPropagation(); go(-1); }}
+            className="absolute left-3 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-crystal/30 bg-abyss/60 text-crystal backdrop-blur transition-colors duration-300 hover:border-gold/60 hover:text-gold"
+            data-hover
+          >
+            <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
+          </button>
+          <button
+            type="button"
+            aria-label={`Next example: ${beforeAfterSlides[(active + 1) % count].tab}`}
+            onMouseDown={(e) => e.stopPropagation()}
+            onClick={(e) => { e.stopPropagation(); go(1); }}
+            className="absolute right-3 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-crystal/30 bg-abyss/60 text-crystal backdrop-blur transition-colors duration-300 hover:border-gold/60 hover:text-gold"
+            data-hover
+          >
+            <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
+          </button>
         </div>
       </div>
 
