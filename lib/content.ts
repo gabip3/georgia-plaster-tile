@@ -18,8 +18,7 @@ export const business = {
   areaLabel: 'East Cobb · Greater Atlanta, Georgia',
   region: 'GA',
   locality: 'East Cobb',
-  established: 2004,
-  years: '20+',
+  established: 1995,
   url: 'https://www.georgiaplasterandtile.com',
   hours: [
     { d: 'Monday – Friday', h: '8:00 AM – 6:00 PM' },
@@ -33,10 +32,10 @@ export const business = {
 };
 
 export const stats = [
-  { value: '20+', label: 'Years of craftsmanship' },
-  { value: '1,400+', label: 'Pools transformed' },
-  { value: '9', label: 'Signature finishes' },
-  { value: '100%', label: 'Atlanta-based artisans' },
+  { value: '1995', label: 'Founded in Georgia' },
+  { value: '282', label: 'Projects completed' },
+  { value: '48', label: 'Sites in progress' },
+  { value: '35', label: 'Business partners' },
 ];
 
 export type Service = {
@@ -205,11 +204,8 @@ export const faqs = [
   },
 ];
 
-export const testimonials = [
-  { quote: 'They treated our pool like a piece of furniture for the whole house. The waterline tile is flawless, guests always ask about it.', author: 'Homeowner', place: 'Milton, GA' },
-  { quote: 'Twenty years of experience shows. The plaster finish is glass-smooth and the crew was immaculate on our property.', author: 'Homeowner', place: 'East Cobb, GA' },
-  { quote: 'A dated 90s pool became the best room in our house. Worth every dollar.', author: 'Homeowner', place: 'Roswell, GA' },
-];
+// Real commercial partners, as listed by Georgia Plaster & Tile.
+export const clients = ['LA Fitness', 'American Pools', 'Atlanta Pools', 'Sweetwater Pools'];
 
 export const nav = [
   { label: 'Work', href: '#portfolio' },
