@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Reveal from '@/components/ui/Reveal';
-import { process } from '@/lib/content';
+import { processSteps } from '@/lib/content';
 
 export default function Process() {
   const ref = useRef<HTMLDivElement>(null);
@@ -29,7 +29,7 @@ export default function Process() {
           <motion.div style={{ height }} className="absolute left-[26px] top-0 w-px bg-gradient-to-b from-gold via-aqua to-teal md:left-1/2" aria-hidden />
 
           <div className="flex flex-col gap-14">
-            {process.map((step, i) => (
+            {processSteps.map((step, i) => (
               <Reveal key={step.n} delay={0.05}>
                 <div className={`relative flex items-start gap-6 md:gap-0 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   {/* Node */}

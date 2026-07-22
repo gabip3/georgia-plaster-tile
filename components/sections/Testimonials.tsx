@@ -1,5 +1,6 @@
 'use client';
 
+import { Droplet } from 'lucide-react';
 import Reveal from '@/components/ui/Reveal';
 import { clients, business } from '@/lib/content';
 
@@ -37,8 +38,9 @@ export default function Testimonials() {
       <div className="marquee mt-20 flex overflow-hidden border-y border-crystal/8 py-6">
         <div className="marquee-track gap-10">
           {marquee.map((c, i) => (
-            <span key={i} className="flex items-center gap-10 font-serif text-2xl text-crystal/25">
-              {c} <span className="text-gold/40">✦</span>
+            <span key={i} className="flex shrink-0 items-center gap-10 whitespace-nowrap font-serif text-2xl text-crystal/25">
+              <span className="whitespace-nowrap">{c}</span>
+              <Droplet className="h-4 w-4 shrink-0 fill-gold/40 text-gold/40" strokeWidth={1.5} />
             </span>
           ))}
         </div>

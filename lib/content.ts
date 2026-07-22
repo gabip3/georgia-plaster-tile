@@ -7,6 +7,9 @@ import {
 const ux = (id: string) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1400&q=80`;
 
+// Real project photos (sourced from the client's own site), served from /public.
+const local = (name: string) => `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/${name}`;
+
 export const business = {
   name: 'Georgia Plaster & Tile',
   short: 'Georgia Plaster & Tile',
@@ -166,14 +169,14 @@ export const projects: Project[] = [
   { title: 'The Marietta Infinity', location: 'East Cobb, GA', category: 'Pools', cats: ['Pools', 'Tile'], tex: 'tex-mosaic', size: 'lg', img: ux('1571003123894-1f0594d2b5d9') },
   { title: 'Travertine Courtyard', location: 'Milton, GA', category: 'Outdoor', cats: ['Outdoor', 'Deck'], tex: 'tex-travertine', size: 'md', img: ux('1620914695139-9507be60a425') },
   { title: 'Emerald Waterline', location: 'Roswell, GA', category: 'Tile', cats: ['Tile'], tex: 'tex-glass', size: 'md', img: ux('1687160954681-230591e7b494') },
-  { title: 'Buckhead Thermal Spa', location: 'Buckhead, GA', category: 'Spa', cats: ['Spa', 'Tile'], tex: 'tex-mosaic', size: 'sm', img: ux('1582719508461-905c673771fd') },
+  { title: 'Buckhead Thermal Spa', location: 'Metro Atlanta, GA', category: 'Spa', cats: ['Spa', 'Tile'], tex: 'tex-mosaic', size: 'sm', img: local('project-freeform-pool-spa.jpg') },
   { title: 'Pearl Quartz Renewal', location: 'Alpharetta, GA', category: 'Plaster', cats: ['Plaster', 'Pools'], tex: 'tex-marble', size: 'md', img: ux('1566305977571-5666677c6e98') },
   { title: 'Sandy Springs Resort', location: 'Sandy Springs, GA', category: 'Pools', cats: ['Pools', 'Outdoor'], tex: 'tex-water', size: 'sm', img: ux('1500815845799-7748ca339f27') },
-  { title: 'Ledgestone Grotto', location: 'Johns Creek, GA', category: 'Outdoor', cats: ['Outdoor', 'Deck'], tex: 'tex-stone', size: 'md', img: ux('1456083334823-6e5bc7132162') },
+  { title: 'Ledgestone Grotto', location: 'Metro Atlanta, GA', category: 'Outdoor', cats: ['Outdoor', 'Deck'], tex: 'tex-stone', size: 'md', img: local('project-round-pool-waterfall.jpg') },
   { title: 'Vinings Glass House', location: 'Vinings, GA', category: 'Tile', cats: ['Tile', 'Spa'], tex: 'tex-glass', size: 'lg', img: ux('1695996472807-bf0763dd23ea') },
 ];
 
-export const process = [
+export const processSteps = [
   { n: '01', title: 'Consultation', desc: 'We walk your yard, understand how you live outdoors, and translate it into a vision for the water.' },
   { n: '02', title: 'Design', desc: 'Finishes, tile lines and lighting are composed together, you see the resort before we build it.' },
   { n: '03', title: 'Material Selection', desc: 'Hand-picked porcelain, glass, stone and plaster, curated to your architecture and light.' },
