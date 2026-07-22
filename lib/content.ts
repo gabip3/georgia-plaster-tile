@@ -153,6 +153,73 @@ export const materials: Material[] = [
   { key: 'pebble', name: 'Pebble & Quartz Finish', origin: 'Aggregate blend', note: 'Durable plaster with a jeweled surface.', tex: 'tex-water', img: ux('1551918120-9739cb430c6d') },
 ];
 
+export type BeforeAfterSlide = {
+  tab: string;
+  title: string;
+  desc: string;
+  stat1: { value: string; label: string };
+  stat2: { value: string; label: string };
+  before: string;
+  after: string;
+};
+
+export const beforeAfterSlides: BeforeAfterSlide[] = [
+  {
+    tab: 'Weekly Care',
+    title: 'From clouded to crystal clear.',
+    desc: 'A full professional cleaning, clearing debris, balancing the water and restoring the plaster and stone surround to a bright, swimmable finish.',
+    stat1: { value: '1 day', label: 'Turnaround' },
+    stat2: { value: '1 crew', label: 'In-house artisans' },
+    before: local('pool%20before.jpeg'),
+    after: local('pool%20after.jpg'),
+  },
+  {
+    tab: 'Algae Removal',
+    title: 'From green to glass.',
+    desc: 'An algae bloom treated, brushed and filtered out, returning this waterline-tiled pool to its true crystal color.',
+    stat1: { value: 'Full', label: 'Algae treatment' },
+    stat2: { value: 'Restored', label: 'Chemical balance' },
+    before: local('before-after/ba-2-before.jpg'),
+    after: local('before-after/ba-2-after.jpg'),
+  },
+  {
+    tab: 'Storm Cleanup',
+    title: 'After the leaves fall.',
+    desc: 'Seasonal debris cleared and the water rebalanced, so the pool stays inviting even as the weather turns.',
+    stat1: { value: 'Seasonal', label: 'Cleanup visit' },
+    stat2: { value: 'Year-round', label: 'Maintenance plans' },
+    before: local('before-after/ba-3-before.jpg'),
+    after: local('before-after/ba-3-after.jpg'),
+  },
+  {
+    tab: 'Debris Removal',
+    title: 'Hands-on, every time.',
+    desc: 'Our crew skims, nets and vacuums by hand, not just chemicals, so every leaf and bit of debris is actually gone.',
+    stat1: { value: 'On-site', label: 'Crew visit' },
+    stat2: { value: 'By hand', label: 'Detail skimmed' },
+    before: local('before-after/ba-4-before.jpg'),
+    after: local('before-after/ba-4-after.jpg'),
+  },
+  {
+    tab: 'Ground-Up Build',
+    title: 'From dirt to a private resort.',
+    desc: 'A full excavation and build, engineered stonework, a raised spa, waterfall and lighting, delivered as one finished, glowing retreat.',
+    stat1: { value: 'Full build', label: 'Excavation to finish' },
+    stat2: { value: 'Custom', label: 'Spa & lighting' },
+    before: local('before-after/ba-5-before.jpg'),
+    after: local('before-after/ba-5-after.jpg'),
+  },
+  {
+    tab: 'Deep Restoration',
+    title: 'Rescued, not replaced.',
+    desc: 'A neglected, algae-dark pool brought back to a bright, swimmable condition, without a full rebuild.',
+    stat1: { value: 'Restored', label: 'No rebuild needed' },
+    stat2: { value: 'Ready', label: 'Swim in days' },
+    before: local('before-after/ba-6-before.jpg'),
+    after: local('before-after/ba-6-after.jpg'),
+  },
+];
+
 export type Project = {
   title: string;
   location: string;
