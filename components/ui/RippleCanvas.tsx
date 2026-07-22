@@ -39,10 +39,10 @@ export default function RippleCanvas() {
         ripples.push({
           x, y,
           r: i * 8,
-          max: (big ? 240 : 70) + Math.random() * (big ? 60 : 20),
+          max: (big ? 240 : 95) + Math.random() * (big ? 60 : 25),
           life: 1,
           hue: Math.random() > 0.5 ? 178 : 45,
-          scale: big ? 1 : 0.35,
+          scale: big ? 1 : 0.5,
         });
       }
       if (ripples.length > 60) ripples.splice(0, ripples.length - 60);
@@ -52,7 +52,7 @@ export default function RippleCanvas() {
     let last = 0;
     const onMove = (e: MouseEvent) => {
       const now = performance.now ? performance.now() : Date.now();
-      if (now - last > 320) { last = now; spawn(e.clientX, e.clientY, false); }
+      if (now - last > 210) { last = now; spawn(e.clientX, e.clientY, false); }
     };
 
     window.addEventListener('click', onClick);
