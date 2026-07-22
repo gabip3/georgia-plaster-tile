@@ -15,7 +15,7 @@ export default function Footer() {
 
         <div className="grid gap-12 md:grid-cols-4">
           <div>
-            <Logo height={76} />
+            <Logo height={120} />
 
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-crystal/55">
               East Cobb&apos;s trusted artisans of luxury pool tile, plaster and stone. Transforming

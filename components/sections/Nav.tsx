@@ -27,7 +27,7 @@ export default function Nav() {
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 md:px-10">
         {/* Logo */}
         <a href="#top" className="group flex items-center" aria-label={`${business.name} home`}>
-          <Logo height={scrolled ? 52 : 64} className="transition-transform duration-500 group-hover:scale-[1.03]" />
+          <Logo height={scrolled ? 68 : 88} className="transition-transform duration-500 group-hover:scale-[1.03]" />
         </a>
 
         {/* Desktop nav */}
