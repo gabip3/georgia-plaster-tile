@@ -46,8 +46,7 @@ export default function Materials() {
 function Header() {
   return (
     <div className="mx-auto mb-10 w-full max-w-[1400px] px-5 md:px-10">
-      <div className="flex items-center gap-4">
-        <span className="h-px w-12 bg-gold/50" />
+      <div>
         <span className="eyebrow text-gold/80">The Material Library</span>
       </div>
       <h2 className="display dsp-2 mt-4 max-w-2xl text-cloud">

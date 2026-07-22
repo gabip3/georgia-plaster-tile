@@ -53,7 +53,6 @@ export default function Hero() {
           className="mb-7 flex items-center gap-4"
         >
           <span className="eyebrow text-gold/90">Luxury Pool Tile · Plaster · Stone</span>
-          <span className="hidden h-px w-16 bg-gold/40 md:block" />
           <span className="hidden items-center gap-1.5 text-xs text-crystal/70 md:flex">
             <Star className="h-3.5 w-3.5 fill-gold text-gold" />
             {business.years} years · Greater Atlanta

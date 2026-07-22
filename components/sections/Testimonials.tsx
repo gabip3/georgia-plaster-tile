@@ -10,8 +10,7 @@ export default function Testimonials() {
     <section className="relative overflow-hidden bg-deep py-28 md:py-36">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <Reveal>
-          <div className="mb-14 flex items-center gap-4">
-            <span className="h-px w-12 bg-gold/50" />
+          <div className="mb-14">
             <span className="eyebrow text-gold/80">Trusted by Atlanta&apos;s Finest Homes</span>
           </div>
         </Reveal>

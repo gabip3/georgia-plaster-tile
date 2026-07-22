@@ -13,8 +13,7 @@ export default function Intro() {
   return (
     <section id="intro" className="relative bg-abyss py-28 md:py-40">
       <div ref={ref} className="mx-auto max-w-[1200px] px-5 md:px-10">
-        <div className="mb-10 flex items-center gap-4">
-          <span className="h-px w-12 bg-gold/50" />
+        <div className="mb-10">
           <span className="eyebrow text-gold/80">Our Philosophy</span>
         </div>
         <p className="display dsp-1 flex flex-wrap text-cloud/25">
