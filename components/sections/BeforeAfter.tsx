@@ -3,6 +3,10 @@
 import { useRef, useState } from 'react';
 import { MoveHorizontal } from 'lucide-react';
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const AFTER_SRC = `${base}/pool%20after.jpg`;
+const BEFORE_SRC = `${base}/pool%20before.jpeg`;
+
 export default function BeforeAfter() {
   const [pos, setPos] = useState(50);
   const ref = useRef<HTMLDivElement>(null);
@@ -31,14 +35,14 @@ export default function BeforeAfter() {
       <div className="absolute inset-0 tex-mosaic" aria-hidden />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=80"
-        alt="Luxury pool after renovation with new glass mosaic waterline tile"
+        src={AFTER_SRC}
+        alt="Georgia Plaster & Tile pool project after renovation, with new spa, waterfall and tile work"
         loading="lazy"
         decoding="async"
         onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 tex-caustics opacity-30" aria-hidden />
+      <div className="absolute inset-0 tex-caustics opacity-15" aria-hidden />
       <span className="absolute right-4 top-4 rounded-full bg-abyss/70 px-3 py-1 text-[0.6rem] uppercase tracking-[0.2em] text-crystal backdrop-blur">After</span>
 
       {/* Before (clipped) */}
@@ -47,15 +51,15 @@ export default function BeforeAfter() {
           <div className="tex-stone absolute inset-0" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1529290130-4ca3753253ae?auto=format&fit=crop&w=1400&q=80"
-            alt="Dated pool before renovation"
+            src={BEFORE_SRC}
+            alt="Georgia Plaster & Tile pool project before renovation"
             loading="lazy"
             decoding="async"
             onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-            className="absolute inset-0 h-full w-full object-cover grayscale"
+            className="absolute inset-0 h-full w-full object-cover grayscale-[35%] contrast-[0.96] brightness-[0.94]"
           />
         </div>
-        <div className="absolute inset-0 bg-abyss/40" />
+        <div className="absolute inset-0 bg-abyss/15" />
         <span className="absolute left-4 top-4 rounded-full bg-abyss/70 px-3 py-1 text-[0.6rem] uppercase tracking-[0.2em] text-crystal/80 backdrop-blur">Before</span>
       </div>
 
