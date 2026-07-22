@@ -1,8 +1,36 @@
 'use client';
 
+import { useState } from 'react';
 import { Droplet } from 'lucide-react';
 import Reveal from '@/components/ui/Reveal';
-import { clients, business } from '@/lib/content';
+import { clients, business, type Client } from '@/lib/content';
+
+function ClientCard({ c }: { c: Client }) {
+  const [failed, setFailed] = useState(false);
+  const showLogo = c.logo && !failed;
+
+  return (
+    <div
+      className="flex h-28 items-center justify-center rounded-[4px] border border-crystal/8 bg-marine/25 px-3 text-center transition-colors duration-500 hover:border-gold/25"
+    >
+      {showLogo ? (
+        <span className="flex h-16 w-full items-center justify-center rounded bg-white px-4 py-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={c.logo}
+            alt={`${c.name} logo`}
+            onError={() => setFailed(true)}
+            className="max-h-11 max-w-full object-contain"
+          />
+        </span>
+      ) : (
+        <span className="whitespace-nowrap font-serif text-cloud/80 text-[clamp(1rem,2.4vw,1.25rem)]">
+          {c.name}
+        </span>
+      )}
+    </div>
+  );
+}
 
 export default function Testimonials() {
   const marquee = [...business.cities, ...business.cities];
@@ -21,14 +49,7 @@ export default function Testimonials() {
         <Reveal delay={0.1}>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
             {clients.map((c) => (
-              <div
-                key={c}
-                className="flex h-28 items-center justify-center rounded-[4px] border border-crystal/8 bg-marine/25 px-3 text-center transition-colors duration-500 hover:border-gold/25"
-              >
-                <span className="whitespace-nowrap font-serif text-cloud/80 text-[clamp(1rem,2.4vw,1.25rem)]">
-                  {c}
-                </span>
-              </div>
+              <ClientCard key={c.name} c={c} />
             ))}
           </div>
         </Reveal>

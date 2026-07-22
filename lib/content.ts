@@ -208,7 +208,15 @@ export const faqs = [
 ];
 
 // Real commercial partners, as listed by Georgia Plaster & Tile.
-export const clients = ['LA Fitness', 'American Pools', 'Atlanta Pools', 'Sweetwater Pools'];
+// `logo` is only set where we could confirm the exact company (avoids
+// misattributing another business's trademark to the wrong "American Pools").
+export type Client = { name: string; logo?: string };
+export const clients: Client[] = [
+  { name: 'LA Fitness', logo: local('partners/la-fitness.svg') },
+  { name: 'American Pools' },
+  { name: 'Atlanta Pools', logo: local('partners/atlanta-pools.png') },
+  { name: 'Sweetwater Pools', logo: local('partners/sweetwater-pools.png') },
+];
 
 export const nav = [
   { label: 'Work', href: '#portfolio' },
