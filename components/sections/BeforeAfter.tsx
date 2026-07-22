@@ -36,7 +36,7 @@ export default function BeforeAfter() {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={AFTER_SRC}
-        alt="Georgia Plaster & Tile pool project after renovation, with new spa, waterfall and tile work"
+        alt="Georgia Plaster & Tile pool after professional cleaning, with crystal clear water"
         loading="lazy"
         decoding="async"
         onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
@@ -52,7 +52,7 @@ export default function BeforeAfter() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={BEFORE_SRC}
-            alt="Georgia Plaster & Tile pool project before renovation"
+            alt="Georgia Plaster & Tile pool before professional cleaning"
             loading="lazy"
             decoding="async"
             onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}

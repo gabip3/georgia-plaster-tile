@@ -62,15 +62,16 @@ export default function Portfolio() {
             <BeforeAfter />
             <div className="flex flex-col justify-center rounded-[4px] border border-crystal/8 bg-marine/25 p-8">
               <span className="eyebrow text-aqua/70">Drag to reveal</span>
-              <h3 className="display mt-3 text-3xl text-cloud">From tired to timeless.</h3>
+              <h3 className="display mt-3 text-3xl text-cloud">From clouded to crystal clear.</h3>
               <p className="mt-4 text-sm leading-relaxed text-crystal/65">
-                A 1990s plaster shell restored with hand-set glass mosaic, new quartz finish
-                and travertine coping. Slide the handle to see the transformation.
+                A full professional cleaning, clearing debris, balancing the water and
+                restoring the plaster and stone surround to a bright, swimmable finish.
+                Slide the handle to see the transformation.
               </p>
               <div className="mt-6 flex gap-8">
                 <div>
-                  <div className="font-serif text-3xl text-gradient-gold">3 wks</div>
-                  <div className="text-[0.62rem] uppercase tracking-[0.16em] text-crystal/50">Timeline</div>
+                  <div className="font-serif text-3xl text-gradient-gold">1 day</div>
+                  <div className="text-[0.62rem] uppercase tracking-[0.16em] text-crystal/50">Turnaround</div>
                 </div>
                 <div>
                   <div className="font-serif text-3xl text-gradient-gold">1 crew</div>

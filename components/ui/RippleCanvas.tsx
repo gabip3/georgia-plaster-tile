@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 
-type Ripple = { x: number; y: number; r: number; max: number; life: number; hue: number };
+type Ripple = { x: number; y: number; r: number; max: number; life: number; hue: number; scale: number };
 
 /**
  * Full-page water ripple layer. Every click (and gentle drift on move)
@@ -39,9 +39,10 @@ export default function RippleCanvas() {
         ripples.push({
           x, y,
           r: i * 8,
-          max: (big ? 240 : 150) + Math.random() * 60,
+          max: (big ? 240 : 70) + Math.random() * (big ? 60 : 20),
           life: 1,
           hue: Math.random() > 0.5 ? 178 : 45,
+          scale: big ? 1 : 0.35,
         });
       }
       if (ripples.length > 60) ripples.splice(0, ripples.length - 60);
@@ -51,7 +52,7 @@ export default function RippleCanvas() {
     let last = 0;
     const onMove = (e: MouseEvent) => {
       const now = performance.now ? performance.now() : Date.now();
-      if (now - last > 90) { last = now; spawn(e.clientX, e.clientY, false); }
+      if (now - last > 320) { last = now; spawn(e.clientX, e.clientY, false); }
     };
 
     window.addEventListener('click', onClick);
@@ -65,19 +66,19 @@ export default function RippleCanvas() {
         rp.r += (rp.max - rp.r) * 0.045;
         rp.life -= 0.012;
         if (rp.life <= 0) { ripples.splice(i, 1); continue; }
-        const alpha = Math.max(0, rp.life) * 0.5;
+        const alpha = Math.max(0, rp.life) * 0.5 * rp.scale;
         ctx.beginPath();
         ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
         ctx.strokeStyle = rp.hue === 45
           ? `rgba(227,201,141,${alpha})`
           : `rgba(120,220,214,${alpha})`;
-        ctx.lineWidth = 1.4 * rp.life;
+        ctx.lineWidth = 1.4 * rp.life * rp.scale;
         ctx.stroke();
         // inner soft ring
         ctx.beginPath();
         ctx.arc(rp.x, rp.y, rp.r * 0.6, 0, Math.PI * 2);
         ctx.strokeStyle = `rgba(191,233,230,${alpha * 0.4})`;
-        ctx.lineWidth = 0.8 * rp.life;
+        ctx.lineWidth = 0.8 * rp.life * rp.scale;
         ctx.stroke();
       }
       raf = requestAnimationFrame(draw);
