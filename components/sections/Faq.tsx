@@ -14,7 +14,7 @@ export default function Faq() {
         <Reveal>
           <div>
             <span className="eyebrow text-gold/80">Questions</span>
-            <h2 className="display dsp-1 mt-4 text-cloud">Answered<br />with candor.</h2>
+            <h2 className="display dsp-1 mt-4 text-cloud">Answered<br />honestly.</h2>
             <p className="mt-6 max-w-xs text-sm text-crystal/60">
               Still curious? A conversation is the best place to start. We answer every call
               ourselves.
