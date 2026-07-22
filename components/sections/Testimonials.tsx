@@ -18,13 +18,15 @@ export default function Testimonials() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
             {clients.map((c) => (
               <div
                 key={c}
-                className="flex h-28 items-center justify-center rounded-[4px] border border-crystal/8 bg-marine/25 px-4 text-center transition-colors duration-500 hover:border-gold/25"
+                className="flex h-28 items-center justify-center rounded-[4px] border border-crystal/8 bg-marine/25 px-3 text-center transition-colors duration-500 hover:border-gold/25"
               >
-                <span className="font-serif text-lg text-cloud/80 sm:text-xl">{c}</span>
+                <span className="whitespace-nowrap font-serif text-cloud/80 text-[clamp(1rem,2.4vw,1.25rem)]">
+                  {c}
+                </span>
               </div>
             ))}
           </div>
