@@ -42,7 +42,7 @@ export default function Portfolio() {
                   role="tab"
                   aria-selected={filter === cat}
                   onClick={() => setFilter(cat)}
-                  className={`rounded-full border px-4 py-2 text-[0.68rem] uppercase tracking-[0.16em] transition-all duration-300 ${
+                  className={`flex min-h-[44px] items-center justify-center rounded-full border px-4 py-2 text-[0.68rem] uppercase tracking-[0.16em] transition-all duration-300 ${
                     filter === cat
                       ? 'border-gold bg-gold/10 text-gold'
                       : 'border-crystal/15 text-crystal/60 hover:border-crystal/40 hover:text-cloud'

@@ -25,10 +25,10 @@ export default function Footer() {
 
           <nav aria-label="Footer">
             <h3 className="mb-5 text-[0.66rem] uppercase tracking-[0.22em] text-gold/70">Explore</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {nav.map((n) => (
                 <li key={n.href}>
-                  <a href={n.href} className="text-sm text-crystal/60 transition-colors hover:text-gold" data-hover>{n.label}</a>
+                  <a href={n.href} className="inline-block py-2 text-sm text-crystal/60 transition-colors hover:text-gold" data-hover>{n.label}</a>
                 </li>
               ))}
             </ul>

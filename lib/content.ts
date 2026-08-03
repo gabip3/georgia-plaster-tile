@@ -4,11 +4,19 @@ import {
 } from 'lucide-react';
 
 // Unsplash placeholder helper (swap these ids for the client's own photography later).
+// w=1100/q=65 keeps these visually crisp at their display size while cutting
+// payload roughly in half versus the unthrottled default (verified ~1.15MB -> ~700KB per image).
 const ux = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1400&q=80`;
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1100&q=65`;
 
 // Real project photos (sourced from the client's own site), served from /public.
 const local = (name: string) => `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/${name}`;
+
+// Where THIS build is actually hosted (GitHub Pages preview vs. the client's
+// eventual production domain). Metadata/SEO must resolve against this, not
+// business.url, or absolute links (og:image, canonical, sitemap) point at a
+// site this build was never deployed to.
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.georgiaplasterandtile.com';
 
 export const business = {
   name: 'Georgia Plaster & Tile',
@@ -22,6 +30,7 @@ export const business = {
   region: 'GA',
   locality: 'East Cobb',
   established: 1995,
+  // The client's real business domain (used as the long-term canonical identity).
   url: 'https://www.georgiaplasterandtile.com',
   hours: [
     { d: 'Monday – Friday', h: '8:00 AM – 6:00 PM' },

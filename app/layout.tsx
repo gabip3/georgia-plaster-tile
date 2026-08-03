@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import './globals.css';
 import { jsonLd } from '@/lib/schema';
-import { business } from '@/lib/content';
+import { business, siteUrl } from '@/lib/content';
 
 const editorial = Cormorant_Garamond({
   subsets: ['latin'],
@@ -26,7 +26,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(business.url),
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'Georgia Plaster & Tile | Luxury Pool Tile, Plaster & Renovation · Atlanta',
     template: '%s | Georgia Plaster & Tile',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: business.name }],
   creator: business.name,
-  alternates: { canonical: business.url },
+  alternates: { canonical: siteUrl },
   robots: {
     index: true,
     follow: true,
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: business.url,
+    url: siteUrl,
     siteName: business.name,
     title: 'Luxury Pool Tile & Plaster Artisans · Georgia Plaster & Tile',
     description:
