@@ -1,13 +1,40 @@
 'use client';
 
-import { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, ArrowRight, Check } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Phone, Mail, MapPin, Clock, ArrowRight, Check, AlertCircle } from 'lucide-react';
 import Reveal from '@/components/ui/Reveal';
 import MagneticButton from '@/components/ui/MagneticButton';
 import { business } from '@/lib/content';
 
+type Status = 'idle' | 'submitting' | 'sent' | 'error';
+
 export default function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>('idle');
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = formRef.current;
+    if (!form) return;
+
+    setStatus('submitting');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      const result = await res.json();
+      if (result.success) {
+        setStatus('sent');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
 
   return (
     <section id="contact" className="relative overflow-hidden bg-deep py-28 md:py-40">
@@ -43,14 +70,22 @@ export default function Contact() {
           {/* Right: form */}
           <Reveal delay={0.15}>
             <form
-              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+              ref={formRef}
+              onSubmit={handleSubmit}
               className="rounded-[6px] border border-crystal/12 bg-abyss/60 p-7 backdrop-blur-xl md:p-9"
             >
+              {/* Web3Forms config */}
+              <input type="hidden" name="access_key" value="c34c796a-cbb6-4261-9757-6946ce365f8b" />
+              <input type="hidden" name="subject" value="New estimate request, Georgia Plaster & Tile website" />
+              <input type="hidden" name="from_name" value="Georgia Plaster & Tile Website" />
+              {/* Honeypot spam trap, must stay empty */}
+              <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+
               <div className="grid gap-5">
-                <Field id="name" label="Full name" placeholder="Jane Anderson" autoComplete="name" />
+                <Field id="name" label="Full name" placeholder="Jane Anderson" autoComplete="name" required />
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Field id="phone" label="Phone" type="tel" placeholder="(770) 000-0000" autoComplete="tel" />
-                  <Field id="email" label="Email" type="email" placeholder="you@home.com" autoComplete="email" />
+                  <Field id="email" label="Email" type="email" placeholder="you@home.com" autoComplete="email" required />
                 </div>
                 <div>
                   <label htmlFor="service" className="mb-2 block text-[0.7rem] uppercase tracking-[0.16em] text-crystal/60">
@@ -58,6 +93,7 @@ export default function Contact() {
                   </label>
                   <select
                     id="service"
+                    name="service"
                     className="w-full rounded-[3px] border border-crystal/15 bg-marine/20 px-4 py-3 text-cloud outline-none transition-colors focus:border-gold/60"
                   >
                     <option className="bg-abyss">Luxury Pool Tile</option>
@@ -74,20 +110,29 @@ export default function Contact() {
                   </label>
                   <textarea
                     id="msg"
+                    name="message"
                     rows={3}
                     placeholder="Size, age, what you'd love to change…"
                     className="w-full resize-none rounded-[3px] border border-crystal/15 bg-marine/20 px-4 py-3 text-cloud placeholder:text-crystal/30 outline-none transition-colors focus:border-gold/60"
                   />
                 </div>
 
-                {sent ? (
+                {status === 'sent' && (
                   <div className="flex items-center gap-3 rounded-[3px] border border-aqua/40 bg-aqua/10 px-4 py-4 text-sm text-crystal" role="status" aria-live="polite">
-                    <Check className="h-5 w-5 text-aqua" />
+                    <Check className="h-5 w-5 shrink-0 text-aqua" />
                     Thank you, we&apos;ll be in touch within one business day.
                   </div>
-                ) : (
-                  <MagneticButton variant="gold" className="w-full">
-                    Request My Free Estimate <ArrowRight className="h-4 w-4" />
+                )}
+                {status === 'error' && (
+                  <div className="flex items-center gap-3 rounded-[3px] border border-red-400/40 bg-red-400/10 px-4 py-4 text-sm text-crystal" role="alert" aria-live="assertive">
+                    <AlertCircle className="h-5 w-5 shrink-0 text-red-300" />
+                    Something went wrong. Please call or email us directly, our info is on the left.
+                  </div>
+                )}
+                {(status === 'idle' || status === 'submitting') && (
+                  <MagneticButton type="submit" variant="gold" className="w-full" disabled={status === 'submitting'}>
+                    {status === 'submitting' ? 'Sending…' : 'Request My Free Estimate'}
+                    {status !== 'submitting' && <ArrowRight className="h-4 w-4" />}
                   </MagneticButton>
                 )}
                 <p className="text-center text-[0.66rem] text-crystal/40">
@@ -117,16 +162,21 @@ function InfoRow({ icon: Icon, label, value, href }: { icon: any; label: string;
   return href ? <a href={href} data-hover>{inner}</a> : inner;
 }
 
-function Field({ id, label, type = 'text', placeholder, autoComplete }: { id: string; label: string; type?: string; placeholder?: string; autoComplete?: string }) {
+function Field({
+  id, label, type = 'text', placeholder, autoComplete, required,
+}: { id: string; label: string; type?: string; placeholder?: string; autoComplete?: string; required?: boolean }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-[0.7rem] uppercase tracking-[0.16em] text-crystal/60">{label}</label>
+      <label htmlFor={id} className="mb-2 block text-[0.7rem] uppercase tracking-[0.16em] text-crystal/60">
+        {label}{required && <span className="ml-1 text-gold">*</span>}
+      </label>
       <input
         id={id}
         name={id}
         type={type}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        required={required}
         className="w-full rounded-[3px] border border-crystal/15 bg-marine/20 px-4 py-3 text-cloud placeholder:text-crystal/30 outline-none transition-colors focus:border-gold/60"
       />
     </div>

@@ -10,10 +10,12 @@ type Props = {
   variant?: 'gold' | 'ghost' | 'water';
   className?: string;
   ariaLabel?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 };
 
 export default function MagneticButton({
-  children, href, onClick, variant = 'gold', className, ariaLabel,
+  children, href, onClick, variant = 'gold', className, ariaLabel, type = 'button', disabled,
 }: Props) {
   const ref = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
 
@@ -37,7 +39,7 @@ export default function MagneticButton({
     water: 'bg-aqua/90 text-abyss hover:bg-aqua',
     ghost: 'border border-crystal/25 text-crystal hover:border-gold/60 hover:text-gold',
   };
-  const cls = clsx(base, variants[variant], className);
+  const cls = clsx(base, variants[variant], disabled && 'opacity-50 cursor-not-allowed', className);
 
   const inner = <span className="relative z-10 flex items-center gap-2">{children}</span>;
 
@@ -59,6 +61,8 @@ export default function MagneticButton({
   return (
     <button
       ref={ref}
+      type={type}
+      disabled={disabled}
       onClick={onClick}
       aria-label={ariaLabel}
       className={cls}
