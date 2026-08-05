@@ -15,7 +15,7 @@ export default function Services() {
           <Reveal>
             <span className="eyebrow text-gold/80">The Craft</span>
             <h2 className="display dsp-1 mt-4 max-w-2xl text-cloud">
-              Nine disciplines,<br />one obsession with water.
+              Ten disciplines,<br />one obsession with water.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>

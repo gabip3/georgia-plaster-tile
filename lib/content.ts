@@ -1,6 +1,6 @@
 import {
   Waves, Gem, Sparkles, Hammer, Mountain, Grid3x3,
-  Palmtree, PaintRoller, LifeBuoy, type LucideIcon,
+  Palmtree, PaintRoller, LifeBuoy, Droplet, type LucideIcon,
 } from 'lucide-react';
 
 // Unsplash placeholder helper (swap these ids for the client's own photography later).
@@ -107,17 +107,26 @@ export const services: Service[] = [
     tex: 'tex-mosaic',
   },
   {
-    slug: 'pool-renovation',
+    slug: 'pool-cleaning-maintenance',
     n: '06',
+    title: 'Pool Cleaning & Maintenance',
+    tagline: 'Water, kept flawless',
+    desc: 'Scheduled service that keeps the water balanced, filtered and mirror-clear, so the pool is always ready to swim, never a project to manage.',
+    icon: Droplet,
+    tex: 'tex-water',
+  },
+  {
+    slug: 'pool-renovation',
+    n: '07',
     title: 'Pool Renovation',
     tagline: 'A complete rebirth',
     desc: 'Full remodels that re-imagine a dated pool as a modern resort feature, new tile, finish, coping and lighting, orchestrated as one project.',
     icon: Hammer,
-    tex: 'tex-water',
+    tex: 'tex-mosaic',
   },
   {
     slug: 'outdoor-living',
-    n: '07',
+    n: '08',
     title: 'Outdoor Living',
     tagline: 'Beyond the water',
     desc: 'Decking, patios and surrounds that extend the finish of the pool into an entire outdoor room, a resort you never have to leave.',
@@ -126,7 +135,7 @@ export const services: Service[] = [
   },
   {
     slug: 'pool-restoration',
-    n: '08',
+    n: '09',
     title: 'Pool Restoration',
     tagline: 'Bringing water back to life',
     desc: 'Structural repair, re-plaster and re-tile that rescue a neglected pool and return it to a flawless, swimmable state, better than the day it was built.',
@@ -135,7 +144,7 @@ export const services: Service[] = [
   },
   {
     slug: 'waterline-tile',
-    n: '09',
+    n: '10',
     title: 'Waterline & Detail Tile',
     tagline: 'The line that defines it',
     desc: 'Precision waterline bands, step markers and mosaic accents, the small details that separate a built pool from a crafted one.',
@@ -249,6 +258,10 @@ export const faqs = [
   {
     q: 'Which finishes do you offer?',
     a: 'From classic white plaster to premium quartz and iridescent pebble finishes, plus glass mosaic, natural stone, travertine and Italian porcelain tile, selected to match your home and how the light falls on your yard.',
+  },
+  {
+    q: 'Do you offer routine pool cleaning and maintenance, or only tile and renovation work?',
+    a: 'Both. Alongside tile, plaster and renovation projects, we run scheduled cleaning and maintenance visits, balancing water chemistry, clearing debris and keeping your pool swim-ready year-round, whether it is a weekly service or a one-time deep clean.',
   },
   {
     q: 'What areas do you serve?',
