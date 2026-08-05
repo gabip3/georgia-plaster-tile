@@ -98,6 +98,7 @@ export default function Contact() {
                   >
                     <option className="bg-abyss">Luxury Pool Tile</option>
                     <option className="bg-abyss">Plaster &amp; Finishes</option>
+                    <option className="bg-abyss">Pool Cleaning &amp; Maintenance</option>
                     <option className="bg-abyss">Pool Renovation</option>
                     <option className="bg-abyss">Custom Spa</option>
                     <option className="bg-abyss">Natural Stone &amp; Travertine</option>

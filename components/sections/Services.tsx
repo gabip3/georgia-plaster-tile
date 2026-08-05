@@ -59,6 +59,43 @@ export default function Services() {
             </Reveal>
           ))}
         </div>
+
+        {/* Featured: hands-on cleaning & maintenance */}
+        <Reveal delay={0.1}>
+          <div className="mt-3 grid gap-3 overflow-hidden rounded-[4px] border border-crystal/8 bg-marine/25 md:grid-cols-[0.85fr_1.15fr]">
+            <div className="relative aspect-[4/5] md:aspect-auto">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/pool-cleaning-service.jpg`}
+                alt="Georgia Plaster & Tile technician hand-cleaning a pool waterline"
+                loading="lazy"
+                decoding="async"
+                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-abyss/40 via-transparent to-transparent" />
+            </div>
+            <div className="flex flex-col justify-center p-8 md:p-10">
+              <span className="eyebrow text-aqua/70">Hands-On, Every Visit</span>
+              <h3 className="display mt-3 text-3xl text-cloud">Real crew, real hands, every single visit.</h3>
+              <p className="mt-4 text-sm leading-relaxed text-crystal/65">
+                Chemistry readers and robots only get you so far. Our own technicians physically
+                skim, brush, test and balance every pool we maintain, so nothing gets missed
+                between visits.
+              </p>
+              <div className="mt-6 flex gap-8">
+                <div>
+                  <div className="font-serif text-3xl text-gradient-gold">By hand</div>
+                  <div className="text-[0.62rem] uppercase tracking-[0.16em] text-crystal/50">Skimmed &amp; brushed</div>
+                </div>
+                <div>
+                  <div className="font-serif text-3xl text-gradient-gold">Every visit</div>
+                  <div className="text-[0.62rem] uppercase tracking-[0.16em] text-crystal/50">Chemistry tested</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
